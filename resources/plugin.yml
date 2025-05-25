@@ -1,0 +1,14 @@
+name: MyPanel
+version: 1.0.0
+main: net.allenpvp.mypanel.Core
+api-version: 1.13
+description: 玩家統計面板插件
+author: YourName
+
+commands:
+  register:
+    description: 註冊帳號
+    usage: /register <password>
+  confirm-register:
+    description: 確認註冊
+    usage: /confirm-register
