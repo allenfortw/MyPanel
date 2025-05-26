@@ -1,0 +1,8 @@
+web:
+  enabled: true
+  port: 8080
+  host: "0.0.0.0"
+
+security:
+  session_timeout: 3600
+  max_login_attempts: 5
