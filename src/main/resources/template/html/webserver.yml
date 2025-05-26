@@ -1,0 +1,44 @@
+templates:
+  login:
+    path: login.html
+    route: /login
+    enabled: true
+    placeholders:
+      title: "MyPanel - Login"
+      headerTitle: "Welcome to MyPanel"
+      playerNameLabel: "Player Name"
+      passwordLabel: "Password"
+      loginButtonText: "Login"
+
+  panel:
+    path: panel.html
+    route: /panel
+    enabled: true
+    auth_required: true
+    placeholders:
+      title: "MyPanel - Dashboard"
+      logoutButtonText: "Logout"
+      defaultFunctionPanel: "Welcome to your dashboard"
+
+# Global configuration
+settings:
+  template_directory: "plugins/MyPanel/template/html"
+  cache_templates: true
+  cache_duration: 3600 # seconds
+
+# Static assets configuration
+static:
+  css:
+    directory: "plugins/MyPanel/template/html/css"
+    route: /css
+  js:
+    directory: "plugins/MyPanel/template/html/js"
+    route: /js
+  images:
+    directory: "plugins/MyPanel/template/html/images"
+    route: /images
+
+# Error pages
+error_pages:
+  404: error/404.html
+  500: error/500.html

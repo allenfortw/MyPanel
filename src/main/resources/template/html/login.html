@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>${title}</title>
+    <style>
+        ${styles}
+    </style>
+</head>
+<body>
+<div class="login-container">
+    <div class="login-header">
+        <h1>${headerTitle}</h1>
+    </div>
+    <form id="loginForm">
+        <div class="form-group">
+            <label for="playerName">${playerNameLabel}</label>
+            <div class="input-container">
+                <input type="text" id="playerName" class="form-control" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="password">${passwordLabel}</label>
+            <div class="input-container">
+                <input type="password" id="password" class="form-control" required>
+                <span class="password-toggle" onclick="togglePassword()">👁</span>
+            </div>
+        </div>
+        <button type="submit" class="login-btn">${loginButtonText} →</button>
+        <div id="errorMessage" class="error-message"></div>
+    </form>
+</div>
+${scripts}
+</body>
+</html>
