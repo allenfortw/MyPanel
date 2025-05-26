@@ -5,9 +5,4 @@ net\allenpvp\mypanel\backend\StaticFileHandler.class
 net\allenpvp\mypanel\backend\WebRouteHandler.class
 net\allenpvp\mypanel\core\AuthManager.class
 net\allenpvp\mypanel\Core.class
-net\allenpvp\mypanel\core\RegisterCommand.class
-net\allenpvp\mypanel\core\PlayerListener.class
-net\allenpvp\mypanel\core\ConfirmRegisterCommand.class
-net\allenpvp\mypanel\core\PanelTestCommand.class
-net\allenpvp\mypanel\frontend\HTMLGenerator.class
 net\allenpvp\mypanel\backend\APIHandler.class

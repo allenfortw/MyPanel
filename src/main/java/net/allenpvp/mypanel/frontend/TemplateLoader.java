@@ -2,6 +2,7 @@ package net.allenpvp.mypanel.frontend;
 
 import org.yaml.snakeyaml.Yaml;
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.*;
 import java.util.*;
 
@@ -41,8 +42,11 @@ public class TemplateLoader {
         // Merge default placeholders from config with provided placeholders
         Map<String, Object> defaultPlaceholders = (Map<String, Object>) templateConfig.get("placeholders");
         if (defaultPlaceholders != null) {
-            placeholders = new HashMap<>(defaultPlaceholders);
-            placeholders.putAll(placeholders);
+            Map<String, Object> mergedPlaceholders = new HashMap<>(defaultPlaceholders);
+            if (placeholders != null) {
+                mergedPlaceholders.putAll(placeholders);
+            }
+            placeholders = mergedPlaceholders;
         }
 
         // Replace placeholders
@@ -57,19 +61,52 @@ public class TemplateLoader {
                 return templateCache.get(fullPath);
             }
 
-            String content = Files.readString(Paths.get(fullPath));
-            templateCache.put(fullPath, content);
-            return content;
+            // Read file content using buffered reader instead of Files.readString()
+            StringBuilder content = new StringBuilder();
+            try (BufferedReader reader = new BufferedReader(
+                    new InputStreamReader(
+                            new FileInputStream(fullPath), StandardCharsets.UTF_8))) {
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    content.append(line).append("\n");
+                }
+            }
+
+            String templateContent = content.toString();
+            templateCache.put(fullPath, templateContent);
+            return templateContent;
+
         } catch (IOException e) {
             throw new RuntimeException("Failed to load template file: " + templatePath, e);
         }
     }
 
     private String replacePlaceholders(String template, Map<String, Object> placeholders) {
+        if (placeholders == null || placeholders.isEmpty()) {
+            return template;
+        }
+
         String result = template;
         for (Map.Entry<String, Object> entry : placeholders.entrySet()) {
-            result = result.replace("${" + entry.getKey() + "}", String.valueOf(entry.getValue()));
+            String placeholder = "${" + entry.getKey() + "}";
+            String value = String.valueOf(entry.getValue());
+            result = result.replace(placeholder, value);
         }
         return result;
+    }
+
+    /**
+     * Clears the template cache
+     */
+    public void clearCache() {
+        templateCache.clear();
+    }
+
+    /**
+     * Reloads configuration and clears cache
+     */
+    public void reload() {
+        loadConfig();
+        clearCache();
     }
 }
