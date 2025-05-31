@@ -77,7 +77,7 @@ public class MyPanel extends JavaPlugin {
         // 初始化組件
         logger = getLogger();
         playerManager = new PlayerManager(this);
-        tokenManager = new TokenManager();
+        tokenManager = new TokenManager(this);  // 修改這裡，傳入 this
 
         // 啟動網頁服務器
         String bindIp = config.getString("web.bind-ip", "localhost");
