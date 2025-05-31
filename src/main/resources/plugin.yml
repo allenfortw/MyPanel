@@ -1,18 +1,11 @@
 name: MyPanel
-version: 1.0.0
-main: net.allenpvp.mypanel.Core
+version: 1.0
+main: top.allenme.mypanel.MyPanel
 api-version: 1.13
-description: 玩家統計面板插件
-author: YourName
-
 commands:
-  register:
-    description: 註冊帳號
-    usage: /register <password>
-  confirm-register:
-    description: 確認註冊
-    usage: /confirm-register
-  paneltest:
-    description: 測試MyPanel各項功能
-    usage: /paneltest [web|auth|panel|url]
-    aliases: [ptest, mypanel]
+  server:
+    description: View server status page
+    usage: /<command>
+  player:
+    description: View your player status page
+    usage: /<command>

@@ -1,8 +1,0 @@
-net\allenpvp\mypanel\core\ConfigManager.class
-net\allenpvp\mypanel\backend\WebServer.class
-net\allenpvp\mypanel\core\PanelManager.class
-net\allenpvp\mypanel\backend\StaticFileHandler.class
-net\allenpvp\mypanel\backend\WebRouteHandler.class
-net\allenpvp\mypanel\core\AuthManager.class
-net\allenpvp\mypanel\Core.class
-net\allenpvp\mypanel\backend\APIHandler.class
